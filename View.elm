@@ -107,10 +107,13 @@ renderKeys model =
 renderKey : Model.Model -> String -> Html.Html Update.Msg
 renderKey model emoji =
     Html.div
-        [ Html.Attributes.classList
-            [ ( "key-selector", True )
-            , ( "is-selected", emoji == model.selectedKey )
+        [ Html.Attributes.class "col s2 m1 emoji-size" ]
+        [ Html.div
+            [ Html.Attributes.classList
+                [ ( "key-selector", True )
+                , ( "is-selected", emoji == model.selectedKey )
+                ]
+            , Html.Events.onClick (Update.SetSelectedKey emoji)
             ]
-        , Html.Events.onClick (Update.SetSelectedKey emoji)
+            [ Html.text emoji ]
         ]
-        [ Html.text emoji ]
