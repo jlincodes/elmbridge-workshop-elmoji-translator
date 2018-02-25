@@ -39,13 +39,26 @@ view model =
                     []
                 ]
             ]
-        -- , Html.p
-        --   [ Html.Attributes.class "center output-text emoji-size"]
-        --   [ Html.text model.currentText ]
-        , Html.p
-          [ Html.Attributes.class "center output-text emoji-size"]
-          [ Html.text (translateText model) ]
-        ]
+        , Html.div
+            [ Html.Attributes.class "switch center"]
+            [ Html.label
+                []
+                [ Html.text "Translate Text"
+                , Html.input
+                    [ Html.Attributes.type_ "checkbox"
+                    , Html.Events.onClick Update.ToggleDirection
+                    ]
+                    []
+                , Html.span
+                [ Html.Attributes.class "lever"]
+                []
+                , Html.text "Translate Emoji"
+                ]
+            ]
+          , Html.p
+              [ Html.Attributes.class "center output-text emoji-size"]
+              [ Html.text (translateText model) ]
+          ]
 
 translateText : Model.Model -> String
 translateText model =
