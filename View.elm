@@ -62,4 +62,8 @@ view model =
 
 translateText : Model.Model -> String
 translateText model =
-    EmojiConverter.textToEmoji Model.defaultKey model.currentText
+    case model.direction of
+        Model.EmojiToText ->
+            EmojiConverter.emojiToText Model.defaultKey model.currentText
+        Model.TextToEmoji ->
+            EmojiConverter.textToEmoji Model.defaultKey model.currentText
