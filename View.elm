@@ -40,7 +40,7 @@ view model =
                 ]
             ]
         , Html.div
-            [ Html.Attributes.class "switch center"]
+            [ Html.Attributes.class "switch center" ]
             [ Html.label
                 []
                 [ Html.text "Translate Text"
@@ -50,20 +50,46 @@ view model =
                     ]
                     []
                 , Html.span
-                [ Html.Attributes.class "lever"]
-                []
+                    [ Html.Attributes.class "lever" ]
+                    []
                 , Html.text "Translate Emoji"
                 ]
             ]
-          , Html.p
-              [ Html.Attributes.class "center output-text emoji-size"]
-              [ Html.text (translateText model) ]
-          ]
+        , Html.p
+            [ Html.Attributes.class "center output-text emoji-size" ]
+            [ Html.text (translateText model) ]
+        , Html.div
+            [ Html.Attributes.class "divider" ]
+            []
+        , Html.section
+            [ Html.Attributes.class "container" ]
+            [ Html.h4
+                [ Html.Attributes.class "center" ]
+                [ Html.text "Select Your Key" ]
+            ]
+        , Html.div
+            [ Html.Attributes.class "row" ]
+            [ Html.div
+                [ Html.Attributes.class "col s2 m2 emoji-size" ]
+                [ Html.div
+                    [ Html.Attributes.class "key-selector" ]
+                    [ Html.text "😁 " ]
+                ]
+            , Html.div
+                [ Html.Attributes.class "col s2 m1 emoji-size" ]
+                [ Html.div
+                    [ Html.Attributes.class "key-selector" ]
+                    [ Html.text "😅 " ]
+                ]
+            ]
+        ]
+
 
 translateText : Model.Model -> String
 translateText model =
     case model.direction of
         Model.EmojiToText ->
             EmojiConverter.emojiToText Model.defaultKey model.currentText
+
         Model.TextToEmoji ->
             EmojiConverter.textToEmoji Model.defaultKey model.currentText
